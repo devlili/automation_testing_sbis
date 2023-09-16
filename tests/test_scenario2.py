@@ -1,3 +1,5 @@
+import time
+
 import pytest
 
 from pages.sbis_contacts_page import SbisContactsPage
@@ -5,27 +7,56 @@ from pages.sbis_home_page import SbisHomePage
 
 
 @pytest.mark.usefixtures("browser", "logger")
-def test_scenario2(browser, logger):
-    """
-    Тест второго сценария: Выбор региона на странице "Контакты".
-    """
-    sbis_home_page = SbisHomePage(browser)
-    sbis_contacts_page = SbisContactsPage(browser)
+def test_contacts_my_region(browser, logger):
+    """Проверка своего региона в разделе "Контакты"."""
+
+    link = "https://sbis.ru/"
+    sbis_home_page = SbisHomePage(browser, link)
+    sbis_contacts_page = SbisContactsPage(browser, link)
+
+    sbis_home_page.open_contacts_page()
+
+    partners_list = sbis_contacts_page.get_partners_list()
+    name_region = sbis_contacts_page.get_name_region()
+
+    assert (
+        "Республика Башкортостан" in name_region
+    ), f"Ожидался регион 'Республика Башкортостан', но получено: {name_region}"
+    assert (
+        "Уфа" in partners_list
+    ), f"Cписок партнеров не получен, получено: {partners_list}"
+    assert (
+        "Республика Башкортостан" in browser.title
+    ), "Заголовок страницы не соответствует ожидаемому"
+    assert (
+        "respublika-bashkortostan" in browser.current_url
+    ), "URL не соответствует ожидаемому"
+
+
+@pytest.mark.usefixtures("browser", "logger")
+def test_contacts_other_region(browser, logger):
+    """Проверка региона "Камчатский край" в разделе "Контакты"."""
+
+    link = "https://sbis.ru/"
+    sbis_home_page = SbisHomePage(browser, link)
+    sbis_contacts_page = SbisContactsPage(browser, link)
 
     sbis_home_page.open_contacts_page()
     sbis_contacts_page.select_region("Камчатский край")
 
+    time.sleep(2)
     partners_list = sbis_contacts_page.get_partners_list()
+    name_region = sbis_contacts_page.get_name_region()
+
     assert (
-        "Камчатский край" in partners_list
-    ), f"Ожидался регион 'Камчатский край', но получено: {partners_list}"
+        "Камчатский край" in name_region
+    ), f"Ожидался регион 'Камчатский край', но получено: {name_region}"
+    assert (
+        "Камчатский" in partners_list
+    ), f"Cписок партнеров неверный, получено: {partners_list}"
     assert (
         "Камчатский край" in browser.title
     ), "Заголовок страницы не соответствует ожидаемому"
     assert (
-        "Камчатский край" in browser.current_url
+        "kamchatskij-kraj" in browser.current_url
     ), "URL не соответствует ожидаемому"
-
-# from selenium.webdriver.support.ui import Select
-# select = Select(browser.find_element(By.TAG_NAME, "select"))
-# select.select_by_visible_text("text") 

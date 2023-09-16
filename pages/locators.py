@@ -2,22 +2,22 @@ from selenium.webdriver.common.by import By
 
 
 class SbisContactsLocators:
-    REGION_SELECT = (By.NAME, "region")
-    PARTNERS_LIST = (By.CLASS_NAME, "partner-list")
+    CONTACTS_SECTION = (By.XPATH, "//h2[text()='Контакты']")
+    PARTNERS_LIST = (By.CSS_SELECTOR, "div[name='itemsContainer']")
+    TENSOR_PAGE = (By.XPATH, "//a[@title='tensor.ru']")
+    REGION_SELECT = (By.CLASS_NAME, "sbis_ru-Region-Chooser.ml-16.ml-xm-0")
+    REGION_NAME = (
+        By.CSS_SELECTOR,
+        "span.sbis_ru-Region-Chooser__text.sbis_ru-link",
+    )
 
 
 class SbisHomeLocators:
     CONTACTS_LINK = (By.LINK_TEXT, "Контакты")
 
 
-# div.sbisru-Header__container.sbis_ru-container:nth-child(2) li:nth-child(2) a
-
-
 class TensorHomeLocators:
-    POWER_IN_PEOPLE_BLOCK = (
-        By.XPATH,
-        "//div[contains(text(), 'Сила в людях')]",
-    )
+    POWER_IN_PEOPLE_BLOCK = (By.XPATH, "//p[contains(text(), 'Сила в людях')]")
     POWER_IN_PEOPLE_MORE_LINK = (
         By.XPATH,
         "//a[contains(text(), 'Подробнее')]",
