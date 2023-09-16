@@ -5,27 +5,9 @@ from pages.sbis_home_page import SbisHomePage
 from pages.tensor_about_page import TensorAboutPage
 from pages.tensor_home_page import TensorHomePage
 
-# @pytest.mark.usefixtures("browser", "logger")
-# def test_scenario1(browser, logger):
-#     """
-#     Тест первого сценария: Переход на tensor.ru и проверка страницы "Сила в людях".
-#     """
-#     link = "https://sbis.ru/"
-#     sbis_home_page = SbisHomePage(browser, link)
-#     sbis_contacts_page = SbisContactsPage(browser, link)
 
-#     sbis_home_page.open_contacts_page()
-#     sbis_contacts_page.open_tensor_page()
-
-#     tensor_home_page = TensorHomePage(browser, "https://tensor.ru/")
-#     tensor_home_page.should_be_power_in_people_block()
-
-# assert (
-#     "tensor.ru" in browser.current_url
-# ), "URL не соответствует ожидаемому"
-
-
-def test_open_contacts(browser):
+@pytest.mark.usefixtures("browser", "logger")
+def test_open_contacts(browser, logger):
     """Проверка перехода в раздел Контакты."""
 
     link = "https://sbis.ru/"
@@ -34,15 +16,23 @@ def test_open_contacts(browser):
     contacts_block = SbisContactsPage(browser, browser.current_url)
     contacts = contacts_block.get_contacts_element()
     assert contacts.is_displayed(), "Нет раздела 'Контакты'"
+    logger.info("Тест успешно завершен: раздел 'Контакты' открыт")
 
 
-# def test_open_tensor_from_contacts(browser):
-#     link = "https://sbis.ru/"
-#     sbis_home_page = SbisHomePage(browser, link)
-#     sbis_home_page.open_contacts_page()
-#     sbis_contacts_page = SbisContactsPage(browser, browser.current_url)
-#     sbis_contacts_page.open_tensor_page()
-#     assert "https://tensor.ru/" in browser.current_url
+def test_open_tensor_from_contacts(browser):
+    """Проверка перехода на tensor.ru по баннеру Тензор с раздела Контакты."""
+
+    link = "https://sbis.ru/"
+    sbis_home_page = SbisHomePage(browser, link)
+    sbis_home_page.open_contacts_page()
+    sbis_contacts_page = SbisContactsPage(browser, browser.current_url)
+    sbis_contacts_page.open_tensor_page()
+
+    windows = browser.window_handles
+    if len(windows) > 1:
+        browser.switch_to.window(windows[-1])
+
+    assert "https://tensor.ru/" in browser.current_url
 
 
 def test_power_in_people_block(browser):

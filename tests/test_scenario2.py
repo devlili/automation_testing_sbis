@@ -1,12 +1,9 @@
 import time
 
-import pytest
-
 from pages.sbis_contacts_page import SbisContactsPage
 from pages.sbis_home_page import SbisHomePage
 
 
-@pytest.mark.usefixtures("browser", "logger")
 def test_contacts_my_region(browser, logger):
     """Проверка своего региона в разделе "Контакты"."""
 
@@ -33,7 +30,6 @@ def test_contacts_my_region(browser, logger):
     ), "URL не соответствует ожидаемому"
 
 
-@pytest.mark.usefixtures("browser", "logger")
 def test_contacts_other_region(browser, logger):
     """Проверка региона "Камчатский край" в разделе "Контакты"."""
 
