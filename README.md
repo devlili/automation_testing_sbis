@@ -1,11 +1,9 @@
 [![Python](https://img.shields.io/badge/-Python_3.9-464646??style=flat-square&logo=Python)](https://www.python.org/downloads/)
 [![Pytest](https://img.shields.io/badge/-Pytest_7.4.2-464646??style=flat-square&logo=Pytest)](https://docs.pytest.org/en/7.1.x/)
 [![Selenium](https://img.shields.io/badge/-Selenium_4.12.0-464646??style=flat-square&logo=Selenium)](https://www.selenium.dev/)
-<br>
-![badge](https://github.com/devlili/automation_testing_sbis/actions/workflows/ci.yml/badge.svg)
 
 # Проект с автотестами
-Данный проект представляет собой автоматизированные тесты для проверки работоспособности сайта https://sbis.ru. Тесты реализованы с использованием языка программирования Python, библиотеки Pytest и Selenium, используя паттерн проектирования Page Object.
+Данный проект представляет собой автоматизированные тесты для проверки работоспособности сайта https://sbis.ru. Тесты реализованы на Pytest и Selenium Webdriver, используя паттерн Page Object.
 
 ТЗ в файле ТЗ.pdf
 
