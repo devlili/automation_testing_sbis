@@ -18,5 +18,4 @@ def browser():
 @pytest.fixture(scope="module")
 def logger():
     """Фикстура для создания экземпляра логгера."""
-
     return configure_logger()
