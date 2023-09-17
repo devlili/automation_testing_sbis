@@ -20,10 +20,7 @@ class SbisHomeLocators:
 class SbisDownloadLocators:
     DOWNLOAD_HEADER = (By.XPATH, "//h1[text()='СКАЧАТЬ']")
     PLUGIN = (By.CSS_SELECTOR, "[data-id='plugin']")
-    WINDOWS = (
-        By.XPATH,
-        "//span[text()='Windows']",
-    )
+    WINDOWS = (By.XPATH, "//span[text()='Windows']")
     WEB_INSTALLER = (
         By.XPATH,
         "//a[contains(text(), 'Скачать (Exe 3.64 МБ)')]",

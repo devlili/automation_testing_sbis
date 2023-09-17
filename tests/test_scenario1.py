@@ -10,8 +10,8 @@ def test_open_contacts(browser):
     link = "https://sbis.ru/"
     sbis_home_page = SbisHomePage(browser, link)
     sbis_home_page.open_contacts_page()
-    contacts_block = SbisContactsPage(browser, browser.current_url)
-    contacts_block.should_be_contacts_page
+    contacts_bloc = SbisContactsPage(browser, browser.current_url)
+    contacts_bloc.should_be_contacts_page()
 
 
 def test_open_tensor_from_contacts(browser):

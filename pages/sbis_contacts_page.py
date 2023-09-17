@@ -13,14 +13,8 @@ class SbisContactsPage(BasePage):
 
     def select_region(self, region):
         """Выбирает регион на странице "Контакты"."""
-        region_select = self.find_element(SbisContactsLocators.REGION_SELECT)
-        region_select.click()
-        self.find_element(
-            (
-                By.XPATH,
-                f"//li[@class='sbis_ru-Region-Panel__item']/span[@title='{region}']",
-            )
-        ).click()
+        self.find_element(SbisContactsLocators.REGION_SELECT).click()
+        self.find_element((By.XPATH, f"//span[@title='{region}']")).click()
 
     def should_be_contacts_page(self):
         """Проверка наличия раздела Контакты."""
