@@ -15,10 +15,14 @@ class SbisContactsLocators:
 class SbisHomeLocators:
     CONTACTS_LINK = (By.LINK_TEXT, "Контакты")
     DOWNLOAD_SBIS = (By.LINK_TEXT, "Скачать СБИС")
-    PLAGIN = (By.XPATH, "//div[text()='СБИС Плагин']")
+
+
+class SbisDownloadLocators:
+    DOWNLOAD_HEADER = (By.XPATH, "//h1[text()='СКАЧАТЬ']")
+    PLUGIN = (By.CSS_SELECTOR, "[data-id='plugin']")
     WINDOWS = (
         By.XPATH,
-        "//span[contains(@class, 'js-innerTabPlugin') and text()='Windows']",
+        "//span[text()='Windows']",
     )
     WEB_INSTALLER = (
         By.XPATH,
@@ -27,7 +31,7 @@ class SbisHomeLocators:
 
 
 class TensorHomeLocators:
-    POWER_IN_PEOPLE_BLOCK = (By.XPATH, "//p[contains(text(), 'Сила в людях')]")
+    POWER_IN_PEOPLE_BLOC = (By.XPATH, "//p[contains(text(), 'Сила в людях')]")
     POWER_IN_PEOPLE_MORE_LINK = (
         By.CSS_SELECTOR,
         "a.tensor_ru-link[href='/about']",

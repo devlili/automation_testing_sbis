@@ -4,7 +4,7 @@ from pages.sbis_contacts_page import SbisContactsPage
 from pages.sbis_home_page import SbisHomePage
 
 
-def test_contacts_my_region(browser, logger):
+def test_contacts_my_region(browser):
     """Проверка своего региона в разделе "Контакты"."""
 
     link = "https://sbis.ru/"
@@ -30,7 +30,7 @@ def test_contacts_my_region(browser, logger):
     ), "URL не соответствует ожидаемому"
 
 
-def test_contacts_other_region(browser, logger):
+def test_contacts_other_region(browser):
     """Проверка региона "Камчатский край" в разделе "Контакты"."""
 
     link = "https://sbis.ru/"
